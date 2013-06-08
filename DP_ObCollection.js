@@ -1,63 +1,33 @@
-/*  DepressedPress.com DP_ObCollection
+/*  DepressedPress.com, DP_ObCollection
 
 Author: Jim Davis, the Depressed Press of Boston
-Date: July 26, 2004
+Created: July 26, 2004
 Contact: webmaster@depressedpress.com
 Website: www.depressedpress.com
 
 Full documentation can be found at:
-http://www.depressedpress.com/Content/Development/JavaScript/Extensions/DP_ObCollection/Index.cfm
+http://depressedpress.com/javascript-extensions/
 
 DP_ObCollections are used to manage groups of object instances ("Members") and abstract common group tasks.
 
 	+ An DP_ObCollection does not maintain any specific order of it members.
 	+ Members of an DP_ObCollectionOrdered may be optionally validated for type.
-	+ A property of Member objects must contain a unique Key to be used as the member identifier. 
+	+ A property of Member objects must contain a unique Key to be used as the member identifier.
 
-Constructor
-	new DP_ObCollection(MemberKeyName, MemberType)
-		"MemberKeyName" is the name of the property in the member objects to be used as a Key.
-		"MemberType" is a reference to the constructor for the member class used.
 
-Methods
-	getCount()
-		Returns a count of the objects in the DP_ObCollection.
-	isEmpty()
-		Returns "true" if the DP_ObCollection has no members.
-	getCreationDate()
-		Returns the date of the DP_ObCollection's creation.
-	getMemberType()
-		Returns a reference to the constructor of the member objects.
-	getMemberKeyName()
-		Returns the string name of the object key used as the member ID.
-	getKeys()
-		Returns and Array of all the keys in the DP_ObCollection.
-	isMember(Member || MemberKey)
-		Determines if a passed object exists in the DP_ObCollection
-	get(MemberKey)
-		Returns the passed member.
-	getAll()
-		Returns the members object.
-	add(NewMember, AllowOverwrite)
-		Adds the passed object into the DP_ObCollection.
-	drop(Member || MemberKey)
-		Drops the passed object.
-	dropAll(), clear()
-		Drops all objects from the DP_ObCollection.
-	isValidType()
-		Determines if an object is the of the correct type for the DP_ObCollection.
++ + + + + + + + LEGAL NOTICE + + + + + + + +
 
-Copyright (c) 1996-2005, The Depressed Press of Boston (depressedpres.com)
+Copyright (c) 1996-2014, The Depressed Press (depressedpres.com)
 
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-+) Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. 
++) Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-+) Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. 
++) Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-+) Neither the name of the DEPRESSED PRESS OF BOSTON (DEPRESSEDPRESS.COM) nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission. 
++) Neither the name of the DEPRESSED PRESS (DEPRESSEDPRESS.COM) nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
@@ -106,7 +76,7 @@ function DP_ObCollection(MemberKeyName, MemberType) {
 	// Parameters
 	//		None
 	// Return (Integer)
-	//		The number of DP_ObCollection members 
+	//		The number of DP_ObCollection members
 	//
 DP_ObCollection.prototype.getCount = function getCount() {
 
@@ -122,7 +92,7 @@ DP_ObCollection.prototype.getCount = function getCount() {
 	// Parameters
 	//		None
 	// Return (Boolean)
-	//		"true" if no members exist, "false" if members exist 
+	//		"true" if no members exist, "false" if members exist
 	//
 DP_ObCollection.prototype.isEmpty = function isEmpty() {
 
@@ -138,7 +108,7 @@ DP_ObCollection.prototype.isEmpty = function isEmpty() {
 	// Parameters
 	//		None
 	// Return (Date)
-	//		The date of the DP_ObCollection's creation 
+	//		The date of the DP_ObCollection's creation
 	//
 DP_ObCollection.prototype.getCreationDate = function getCreationDate() {
 
@@ -154,7 +124,7 @@ DP_ObCollection.prototype.getCreationDate = function getCreationDate() {
 	// Parameters
 	//		None
 	// Return (Reference)
-	//		The constructor for the member objects 
+	//		The constructor for the member objects
 	//
 DP_ObCollection.prototype.getMemberType = function getMemberType() {
 
@@ -170,7 +140,7 @@ DP_ObCollection.prototype.getMemberType = function getMemberType() {
 	// Parameters
 	//		None
 	// Return (String)
-	//		The member key name 
+	//		The member key name
 	//
 DP_ObCollection.prototype.getMemberKeyName = function getMemberKeyName() {
 
@@ -192,7 +162,7 @@ DP_ObCollection.prototype.getKeys = function getKeys() {
 
 	var Cnt;
 	var KeyArray = new Array();
-	
+
 	for ( Key in this.Members ) {
 		KeyArray[KeyArray.length] = Key;
 	};
@@ -295,7 +265,7 @@ DP_ObCollection.prototype.add = function add(NewMember, AllowOverwrite) {
 DP_ObCollection.prototype.drop = function drop(MemberKey) {
 
 	var MemberExists;
-	
+
 		// determine if the key name already exists
 	if ( this.isMember(MemberKey) ) {
 		MemberExists = false;
